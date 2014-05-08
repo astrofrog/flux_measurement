@@ -1,5 +1,6 @@
 import json
 
+
 class Measurement(object):
 
     def __init__(self, flux=None, wavelength=None, filter=None, epoch=None,
@@ -80,10 +81,9 @@ class Measurement(object):
             if value is None:
                 continue
             data[attr] = value
-        return json.dumps(data, separators=(',',':'))
-        
+        return json.dumps(data, separators=(',', ':'))
+
     @classmethod
     def from_json(cls, string):
         data = json.loads(string)
         return cls(**data)
-        
