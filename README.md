@@ -1,10 +1,10 @@
 About
-=====
+-----
 
 A simple package to represent flux measurements
 
 Example
-=======
+-------
 
 We can start off by reading in a file containing JSON-encoded data on each row:
 
