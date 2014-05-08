@@ -13,6 +13,12 @@ class MeasurementSet(object):
         else:
             raise TypeError("measurements should be a list, set, or tuple")
 
+    def to_file(self, filename):
+        with open(filename, 'w') as f:
+            for m in self._measurements:
+                f.write(m.to_json())
+                f.write("\n")
+
     @classmethod
     def from_file(cls, filename):
         measurements = []
