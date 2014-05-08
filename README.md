@@ -8,8 +8,8 @@ Example
 
 We can start off by reading in a file containing JSON-encoded data on each row:
 
-    >>> from flux_measurement import MeasurementSet
-    >>> all = MeasurementSet.from_file('example_data')
+    >>> from flux_measurement import MeasurementList
+    >>> all = MeasurementList.from_file('example_data')
     >>> all
     [<Measurement source_id=source_000 flux=8.603303604760317 wavelength=3.6 object_id=0>,
      <Measurement source_id=source_000 flux=1.021605304728429 wavelength=4.5 object_id=3>,

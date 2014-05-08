@@ -2,7 +2,7 @@ import numpy as np
 from .measurement import Measurement
 
 
-class MeasurementSet(list):
+class MeasurementList(list):
     """
     A set of measurements that can be queried
     """
@@ -26,12 +26,12 @@ class MeasurementSet(list):
         if hasattr(Measurement, attr):
             return np.array([getattr(m, attr, None) for m in self])
         else:
-            raise AttributeError("MeasurementSet has no attribute: {0}".format(attr))
+            raise AttributeError("MeasurementList has no attribute: {0}".format(attr))
 
     def select(self, keep):
         if len(keep) != len(self):
             raise ValueError("Length of selection should match number of measurements")
-        subset = MeasurementSet()
+        subset = MeasurementList()
         for i in range(len(keep)):
             if keep[i]:
                 subset.append(self[i])

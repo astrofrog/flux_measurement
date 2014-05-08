@@ -1,2 +1,2 @@
 from .measurement import Measurement
-from .measurement_set import MeasurementSet
+from .measurement_set import MeasurementList
