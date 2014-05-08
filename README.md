@@ -83,7 +83,27 @@ And the resulting file looks like:
     {"flux":6.986826970697097,"object_id":1,"source_id":"source_015","wavelength":4.5}
     {"flux":3.9462547104421617,"object_id":1,"source_id":"source_019","wavelength":8.0}
 
+Flexibility
+-----------
+
+The idea behind these classes and the JSON storage is flexibility in terms of
+the data contained for each measurement. Only the properties used are stored.
+
+As an example of flexibility, we can store a source along with the polygon that
+defines it spatially:
+
+    >>> from flux_measurement import Measurement
+    >>> m = Measurement()
+    >>> m.source_id = "extended_source"
+    >>> m.shape = 'polygon'
+    >>> m.polygon = [(1.,3.), (4., 3.), (2., 5.)]
+    >>> m.to_json()
+    '{"shape":"polygon","polygon":[[1.0,3.0],[4.0,3.0],[2.0,5.0]],"source_id":"extended_source"}'
+
 Caveats
-=======
+-------
 
 This is not intended for storing large catalogs with more 10^6 or more sources.
+For high performance, we could consider storing the data in FITS binary table
+form instead, since we can still use variable length vector columns for things
+like shape lists, etc.

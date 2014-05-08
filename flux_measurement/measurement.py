@@ -67,6 +67,14 @@ class Measurement(object):
             raise ValueError("shape should be one of gaussian/circle/polygon")
 
     @property
+    def polygon(self):
+        return self._polygon
+
+    @polygon.setter
+    def polygon(self, value):
+        self._polygon = value
+
+    @property
     def source_id(self):
         return self._source_id
 
@@ -83,8 +91,8 @@ class Measurement(object):
 
     def to_json(self):
         data = {}
-        for attr in ['flux', 'wavelength', 'filter', 'epoch', 'position',
-                     'shape', 'object_id', 'source_id']:
+        for attr in ['source_id', 'flux', 'wavelength', 'filter', 'epoch', 'position',
+                     'shape', 'polygon', 'object_id']:
             value = getattr(self, attr)
             if value is None:
                 continue
@@ -99,7 +107,7 @@ class Measurement(object):
     def __repr__(self):
         r = "<Measurement"
         for attr in ['source_id', 'flux', 'wavelength', 'filter', 'epoch', 'position',
-                     'shape', 'object_id']:
+                     'shape', 'polygon', 'object_id']:
             value = getattr(self, attr)
             if value is not None:
                 r += " {0}={1}".format(attr, value)
